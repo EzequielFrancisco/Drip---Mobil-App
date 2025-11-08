@@ -1,0 +1,56 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+.buildozer/
+bin/
+*.apk
+*.pyo
+*.pyc
+__pycache__/
+
+# Virtual environment
+.venv/
+.venv1/
+venv/
+env/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+*.whl
+
+# Kivy / KivyMD cache
+.kivy/
+
+# IDEs
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Images ou assets grandes (opcional, se quiser manter fora do repo)
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# PyInstaller
+*.spec
+
+# Python compiled files
+*.pyo
+*.pyd
+
+# Coverage / test reports
+.coverage
+htmlcov/
+*.cover

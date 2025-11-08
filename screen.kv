@@ -1,0 +1,183 @@
+<HomeScreen>:
+    MDNavigationLayout:
+        ScreenManager:
+            MDScreen:    
+                BoxLayout:
+                    orientation: 'vertical'
+                    padding: ('20dp', '20dp', '20dp', '20dp')
+                    spacing: '20dp'
+
+                    MDTopAppBar:
+                        title: "Drip"
+                        left_action_items: [["menu", lambda x: nav_drawer.set_state("toggle")]]
+                        md_bg_color: 1, 1, 1, 0.9
+                        elevation: 0.5
+                        specific_text_color: "black"
+
+                    ScrollView:
+                        MDGridLayout:
+                            cols: 1
+                            spacing: "12dp"
+                            padding: "12dp"
+                            size_hint_y: None
+                            height: self.minimum_height
+                            adaptive_height: True   # ESSENCIAL para o scroll funcionar
+
+                            MDCard:
+                                size_hint: None, None
+                                size: "350dp", "130dp"
+                                radius: [12, 12, 12, 12]
+                                elevation: 1
+                                pos_hint: {"center_x": 0.5}
+
+                                RelativeLayout:
+                                    FitImage:
+                                        source: "img/camisa.jpeg"
+                                        radius: [12, 12, 12, 12]
+
+                                    MDLabel:
+                                        text: "Camisas"
+                                        font_style: "H6"
+                                        theme_text_color: "Custom"
+                                        text_color: 0, 0, 0, 1  # preto
+                                        pos_hint: {"center_y": 0.15}
+                                        halign: "center"
+                            MDCard:
+                                size_hint: None, None
+                                size: "350dp", "130dp"
+                                radius: [12, 12, 12, 12]
+                                elevation: 1
+                                pos_hint: {"center_x": 0.5}
+
+                                RelativeLayout:
+                                    FitImage:
+                                        source: "img/calcas.jpeg"
+                                        radius: [12, 12, 12, 12]
+
+                                    MDLabel:
+                                        text: "Calcas"
+                                        font_style: "H6"
+                                        theme_text_color: "Custom"
+                                        text_color: 0, 0, 0, 1  # preto
+                                        pos_hint: {"center_y": 0.15}
+                                        halign: "center"
+                            MDCard:
+                                size_hint: None, None
+                                size: "350dp", "130dp"
+                                radius: [12, 12, 12, 12]
+                                elevation: 1
+                                pos_hint: {"center_x": 0.5}
+
+                                RelativeLayout:
+                                    FitImage:
+                                        source: "img/bones.jpeg"
+                                        radius: [12, 12, 12, 12]
+
+                                    MDLabel:
+                                        text: "Bones"
+                                        font_style: "H6"
+                                        theme_text_color: "Custom"
+                                        text_color: 0, 0, 0, 1  # preto
+                                        pos_hint: {"center_y": 0.15}
+                                        halign: "center"
+                            MDCard:
+                                size_hint: None, None
+                                size: "350dp", "130dp"
+                                radius: [12, 12, 12, 12]
+                                elevation: 1
+                                pos_hint: {"center_x": 0.5}
+
+                                RelativeLayout:
+                                    FitImage:
+                                        source: "img/bolsas.png"
+                                        radius: [12, 12, 12, 12]
+
+                                    MDLabel:
+                                        text: "Bolsas"
+                                        font_style: "H6"
+                                        theme_text_color: "Custom"
+                                        text_color: 0, 0, 0, 1  # preto
+                                        pos_hint: {"center_y": 0.15}
+                                        halign: "center"
+
+    MDNavigationDrawer:
+        id: nav_drawer
+        radius: 0, 16, 16, 0
+        drawer_type: "standard"
+
+        MDNavigationDrawerMenu:
+
+            # Título do Menu
+            MDNavigationDrawerLabel:
+                text: "Menu"
+                font_style: "H6"
+                size_hint_y: None
+                height: "48dp"
+
+            MDNavigationDrawerItem:
+                text: "Perfil"
+                icon: "account-circle"
+                on_release: app.show_profile()  # Função que define no Python
+
+            MDNavigationDrawerItem:
+                text: "Feed Principal"
+                icon: "view-dashboard-outline"
+                on_release: app.show_feed()
+
+            MDNavigationDrawerDivider:
+
+            MDNavigationDrawerLabel:
+                text: "Categorias"
+                font_style: "Subtitle1"
+                size_hint_y: None
+                height: "32dp"
+
+            MDNavigationDrawerItem:
+                text: "Camisas"
+                icon: "tshirt-crew"
+                on_release: app.filter_category("camisas")
+
+            MDNavigationDrawerItem:
+                text: "Calças"
+                icon: "jeans"
+                on_release: app.filter_category("calcas")
+
+            MDNavigationDrawerItem:
+                text: "Ténis"
+                icon: "shoe-sneaker"
+                on_release: app.filter_category("tenis")
+
+            MDNavigationDrawerItem:
+                text: "Bonés"
+                icon: "hat-fedora"
+                on_release: app.filter_category("bones")
+
+            MDNavigationDrawerItem:
+                text: "Bolsas"
+                icon: "bag-personal"
+                on_release: app.filter_category("bolsas")
+
+            MDNavigationDrawerDivider:
+
+            MDNavigationDrawerItem:
+                text: "Favoritos"
+                icon: "heart-outline"
+                on_release: app.show_favorites()
+
+            MDNavigationDrawerItem:
+                text: "Inspiração Aleatória"
+                icon: "shuffle-variant"
+                on_release: app.show_random_look()
+
+            MDNavigationDrawerDivider:
+
+            MDNavigationDrawerItem:
+                text: "Configurações"
+                icon: "cog-outline"
+                on_release: app.show_settings()
+
+            MDNavigationDrawerItem:
+                text: "Sobre"
+                icon: "information-outline"
+                on_release: app.show_about()
+
