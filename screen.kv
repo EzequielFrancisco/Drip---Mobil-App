@@ -1,4 +1,14 @@
+ScreenManager:
+    HomeScreen:
+    ShirtScreen:
+    CapScreen:
+    BagScreen:
+    PantsScreen:
+    ShusScreen:
+    AbouteScreen:
+
 <HomeScreen>:
+    name: "home"
     MDNavigationLayout:
         ScreenManager:
             MDScreen:    
@@ -29,6 +39,7 @@
                                 radius: [12, 12, 12, 12]
                                 elevation: 1
                                 pos_hint: {"center_x": 0.5}
+                                on_release: app.shirt()
 
                                 RelativeLayout:
                                     FitImage:
@@ -48,6 +59,7 @@
                                 radius: [12, 12, 12, 12]
                                 elevation: 1
                                 pos_hint: {"center_x": 0.5}
+                                on_release: app.pants()
 
                                 RelativeLayout:
                                     FitImage:
@@ -67,6 +79,7 @@
                                 radius: [12, 12, 12, 12]
                                 elevation: 1
                                 pos_hint: {"center_x": 0.5}
+                                on_release: app.cap()
 
                                 RelativeLayout:
                                     FitImage:
@@ -86,6 +99,7 @@
                                 radius: [12, 12, 12, 12]
                                 elevation: 1
                                 pos_hint: {"center_x": 0.5}
+                                on_release: app.bag()
 
                                 RelativeLayout:
                                     FitImage:
@@ -99,6 +113,28 @@
                                         text_color: 0, 0, 0, 1  # preto
                                         pos_hint: {"center_y": 0.15}
                                         halign: "center"
+                            MDCard:
+                                size_hint: None, None
+                                size: "350dp", "130dp"
+                                radius: [12, 12, 12, 12]
+                                elevation: 1
+                                pos_hint: {"center_x": 0.5}
+                                on_release: app.shus()
+
+                                RelativeLayout:
+                                    FitImage:
+                                        source: "img/tenis.jpeg"
+                                        radius: [12, 12, 12, 12]
+
+                                    MDLabel:
+                                        text: "Tenis"
+                                        font_style: "H6"
+                                        theme_text_color: "Custom"
+                                        text_color: 0, 0, 0, 1  # preto
+                                        pos_hint: {"center_y": 0.15}
+                                        halign: "center"
+
+
 
     MDNavigationDrawer:
         id: nav_drawer
@@ -117,12 +153,12 @@
             MDNavigationDrawerItem:
                 text: "Perfil"
                 icon: "account-circle"
-                on_release: app.show_profile()  # Função que define no Python
+                # on_release: app.show_profile()  # Função que define no Python
 
             MDNavigationDrawerItem:
                 text: "Feed Principal"
                 icon: "view-dashboard-outline"
-                on_release: app.show_feed()
+                # on_release: app.show_feed()
 
             MDNavigationDrawerDivider:
 
@@ -135,49 +171,270 @@
             MDNavigationDrawerItem:
                 text: "Camisas"
                 icon: "tshirt-crew"
-                on_release: app.filter_category("camisas")
+                # on_release: app.filter_category("camisas")
 
             MDNavigationDrawerItem:
                 text: "Calças"
                 icon: "jeans"
-                on_release: app.filter_category("calcas")
+                #on_release: app.filter_category("calcas")
 
             MDNavigationDrawerItem:
                 text: "Ténis"
                 icon: "shoe-sneaker"
-                on_release: app.filter_category("tenis")
+                # on_release: app.filter_category("tenis")
 
             MDNavigationDrawerItem:
                 text: "Bonés"
                 icon: "hat-fedora"
-                on_release: app.filter_category("bones")
+                # on_release: app.filter_category("bones")
 
             MDNavigationDrawerItem:
                 text: "Bolsas"
                 icon: "bag-personal"
-                on_release: app.filter_category("bolsas")
+                # on_release: app.filter_category("bolsas")
 
             MDNavigationDrawerDivider:
 
             MDNavigationDrawerItem:
                 text: "Favoritos"
                 icon: "heart-outline"
-                on_release: app.show_favorites()
+                # on_release: app.show_favorites()
 
             MDNavigationDrawerItem:
                 text: "Inspiração Aleatória"
                 icon: "shuffle-variant"
-                on_release: app.show_random_look()
+                # on_release: app.show_random_look()
 
             MDNavigationDrawerDivider:
 
             MDNavigationDrawerItem:
                 text: "Configurações"
                 icon: "cog-outline"
-                on_release: app.show_settings()
+                # on_release: app.show_settings()
 
             MDNavigationDrawerItem:
                 text: "Sobre"
                 icon: "information-outline"
                 on_release: app.show_about()
+# Sobre
+<AbouteScreen>:
+    name: "aboute"
+    
+    MDScreen:
+        MDBoxLayout:
+            orientation: 'vertical'
+            padding: dp(40)
+            spacing: dp(25)
+            adaptive_height: True
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            size_hint_x: 0.9
 
+            MDLabel:
+                text: "Drip"
+                font_style: "H3"
+                halign: "center"
+                theme_text_color: "Primary"
+                bold: True
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            MDSeparator:
+
+            MDLabel:
+                text: '"Criado com dedicação por um entusiasta de Python que acredita em soluções práticas e estéticas para amantes de moda."'
+                font_style: "Body1"
+                halign: "center"
+                theme_text_color: "Secondary"
+                text_size: self.width, None
+                height: self.texture_size[1]
+
+            MDSeparator:
+
+            MDLabel:
+                text: '"By Star"'
+                font_style: "Body1"
+                halign: "center"
+                theme_text_color: "Secondary"
+                text_size: self.width, None
+                height: self.texture_size[1]
+                
+
+# Tela camisas
+<ShirtScreen>:
+    name: "shirt"
+
+    MDNavigationLayout:
+        ScreenManager:
+            MDScreen:    
+                BoxLayout:
+                    orientation: 'vertical'
+                    padding: ('20dp', '20dp', '20dp', '20dp')
+                    spacing: '20dp'
+
+                    MDTopAppBar:
+                        title: "Drip"
+                        left_action_items: [["arrow-left", lambda x: app.go_back()]]
+                        md_bg_color: 1, 1, 1, 0.9
+                        elevation: 0.5
+                        specific_text_color: "black"
+
+                    MDTextField:
+                        id: search_field
+                        hint_text: "Pesquisar..."
+                        icon_left: "magnify"        # ícone de lupa à esquerda
+                        mode: "rectangle"            # ou "round" para bordas arredondadas
+                        size_hint_x: 0.9
+                        pos_hint: {"center_x": 0.5}
+                        #on_text: app.search(self.text)  # chama função no Python quando o texto muda
+                    ScrollView:
+                        MDGridLayout:
+                            id: cards_container
+                            cols: 1
+                            spacing: "12dp"
+                            padding: "12dp"
+                            size_hint_y: None
+                            height: self.minimum_height
+                            adaptive_height: True   # ESSENCIAL para o scroll funcionar
+#Tela bones
+<CapScreen>:
+    name: "cap"
+
+    MDNavigationLayout:
+        ScreenManager:
+            MDScreen:    
+                BoxLayout:
+                    orientation: 'vertical'
+                    padding: ('20dp', '20dp', '20dp', '20dp')
+                    spacing: '20dp'
+
+                    MDTopAppBar:
+                        title: "Drip"
+                        left_action_items: [["arrow-left", lambda x: app.go_back()]]
+                        md_bg_color: 1, 1, 1, 0.9
+                        elevation: 0.5
+                        specific_text_color: "black"
+
+                    MDTextField:
+                        id: search_field
+                        hint_text: "Pesquisar..."
+                        icon_left: "magnify"        # ícone de lupa à esquerda
+                        mode: "rectangle"            # ou "round" para bordas arredondadas
+                        size_hint_x: 0.9
+                        pos_hint: {"center_x": 0.5}
+                        #on_text: app.search(self.text)  # chama função no Python quando o texto muda
+                    ScrollView:
+                        MDGridLayout:
+                            id: cards_cap_container
+                            cols: 1
+                            spacing: "12dp"
+                            padding: "12dp"
+                            size_hint_y: None
+                            height: self.minimum_height
+                            adaptive_height: True   # ESSENCIAL para o scroll funcionar
+#Tela bolsa
+<BagScreen>:
+    name: "bag"
+    MDNavigationLayout:
+        ScreenManager:
+            MDScreen:    
+                BoxLayout:
+                    orientation: 'vertical'
+                    padding: ('20dp', '20dp', '20dp', '20dp')
+                    spacing: '20dp'
+
+                    MDTopAppBar:
+                        title: "Drip"
+                        left_action_items: [["arrow-left", lambda x: app.go_back()]]
+                        md_bg_color: 1, 1, 1, 0.9
+                        elevation: 0.5
+                        specific_text_color: "black"
+
+                    MDTextField:
+                        id: search_field
+                        hint_text: "Pesquisar..."
+                        icon_left: "magnify"        # ícone de lupa à esquerda
+                        mode: "rectangle"            # ou "round" para bordas arredondadas
+                        size_hint_x: 0.9
+                        pos_hint: {"center_x": 0.5}
+                        #on_text: app.search(self.text)  # chama função no Python quando o texto muda
+                    ScrollView:
+                        MDGridLayout:
+                            id: cards_bag_container
+                            cols: 1
+                            spacing: "12dp"
+                            padding: "12dp"
+                            size_hint_y: None
+                            height: self.minimum_height
+                            adaptive_height: True   # ESSENCIAL para o scroll funcionar
+
+#Tela calsas
+<PantsScreen>:
+    name: "pants"
+    MDNavigationLayout:
+        ScreenManager:
+            MDScreen:    
+                BoxLayout:
+                    orientation: 'vertical'
+                    padding: ('20dp', '20dp', '20dp', '20dp')
+                    spacing: '20dp'
+
+                    MDTopAppBar:
+                        title: "Drip"
+                        left_action_items: [["arrow-left", lambda x: app.go_back()]]
+                        md_bg_color: 1, 1, 1, 0.9
+                        elevation: 0.5
+                        specific_text_color: "black"
+
+                    MDTextField:
+                        id: search_field
+                        hint_text: "Pesquisar..."
+                        icon_left: "magnify"        # ícone de lupa à esquerda
+                        mode: "rectangle"            # ou "round" para bordas arredondadas
+                        size_hint_x: 0.9
+                        pos_hint: {"center_x": 0.5}
+                        #on_text: app.search(self.text)  # chama função no Python quando o texto muda
+                    ScrollView:
+                        MDGridLayout:
+                            id: cards_pants_container
+                            cols: 1
+                            spacing: "12dp"
+                            padding: "12dp"
+                            size_hint_y: None
+                            height: self.minimum_height
+                            adaptive_height: True   # ESSENCIAL para o scroll funcionar
+
+#Tela calsas
+<ShusScreen>:
+    name: "shus"
+    MDNavigationLayout:
+        ScreenManager:
+            MDScreen:    
+                BoxLayout:
+                    orientation: 'vertical'
+                    padding: ('20dp', '20dp', '20dp', '20dp')
+                    spacing: '20dp'
+
+                    MDTopAppBar:
+                        title: "Drip"
+                        left_action_items: [["arrow-left", lambda x: app.go_back()]]
+                        md_bg_color: 1, 1, 1, 0.9
+                        elevation: 0.5
+                        specific_text_color: "black"
+
+                    MDTextField:
+                        id: search_field
+                        hint_text: "Pesquisar..."
+                        icon_left: "magnify"        # ícone de lupa à esquerda
+                        mode: "rectangle"            # ou "round" para bordas arredondadas
+                        size_hint_x: 0.9
+                        pos_hint: {"center_x": 0.5}
+                        #on_text: app.search(self.text)  # chama função no Python quando o texto muda
+                    ScrollView:
+                        MDGridLayout:
+                            id: cards_shus_container
+                            cols: 1
+                            spacing: "12dp"
+                            padding: "12dp"
+                            size_hint_y: None
+                            height: self.minimum_height
+                            adaptive_height: True   # ESSENCIAL para o scroll funcionar
